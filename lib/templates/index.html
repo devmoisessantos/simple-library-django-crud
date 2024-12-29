@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container text-center">
+    
+    <h1><b>Livraria</b></h1>
+    <hr>
+    <p class="text-muted">"A sua jornada literária começa aqui."</p>
+    <p>Descubra livros incríveis e mergulhe em um mundo de conhecimento e histórias inesquecíveis.</p>
+
+    {% if not request.user.is_authenticated %}
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg m-2" href="{% url 'register' %}">
+            <i class="fa fa-user-plus"></i> Criar Conta
+        </a>
+        <a class="btn btn-secondary btn-lg m-2" href="{% url 'login' %}">
+            <i class="fa fa-sign-in"></i> Entrar
+        </a>
+    
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

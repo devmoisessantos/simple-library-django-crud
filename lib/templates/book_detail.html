@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-align-left"><b>Detalhes do Livro:</b></h2>
+<hr>
+<div class="container">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        <div class="card">
+            <div class="card-header">
+
+                <h4><b>{{ book.title }}</b></h4>
+                <hr>
+                <p><b>Descrição:</b> {{ book.description }}</p>
+                <br>
+                <p><b>Genero:</b> {{ book.genre }}</p>
+                <p><b>Ano:</b> {{ book.year }}</p>
+                <br><hr>
+                <p><b>Valor:</b> R$ {{ book.value|floatformat:2 }} </p>
+
+            </div>
+                
+        </div>
+            <hr> 
+            <a class="btn btn-secondary" href="{% url 'books' %}">Voltar</a>
+            <a class="btn btn-success" href="{% url 'update_book' book.id %}">Editar Livro</a>
+            <a class="btn btn-danger" href="{% url 'delete_book' book.id %}">Deletar</a>
+    </div>
+
+</div>
+
+<br>
+
+{% endblock content %}

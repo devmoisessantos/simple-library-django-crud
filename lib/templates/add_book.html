@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-align-left"><b>Adicionar Livro:</b></h2>
+<hr>
+
+<form method="POST" action="{% url 'add_book' %}">
+
+    {% if form.errors %}
+        <div class="alert alert-warning" alert-dismissible fade show role="alert">
+            Houve um erro ao adicionar. Verifique os dados informados!.
+            {% for field in form %}
+                {% if field.errors %}
+                    {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% csrf_token %}
+    <!-- Campo de entrada para o cadastro -->
+    {{ form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+</form>
+
+<br>
+
+{% endblock content %}
